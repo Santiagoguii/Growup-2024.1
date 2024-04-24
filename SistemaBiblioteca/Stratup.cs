@@ -26,7 +26,7 @@ namespace Crud_usuarios
         {
             services.AddControllers();
             services.AddControllers();
-            services.AddDbContext<SistemaBiblioteca.Models.Biblioteca>(options =>
+            services.AddDbContext<Crud_usuarios.Models.Biblioteca>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
