@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Crud_usuarios.Models;
+using Crud_usuarios.Services;
 
 namespace Crud_usuarios.Controllers
 {
@@ -14,86 +15,72 @@ namespace Crud_usuarios.Controllers
     public class UsersController : Controller
     {
         private readonly ILogger<UsersController> _logger;
-        private readonly List<User> _users = new List<User>();
+        private readonly IUserService _userService;
 
-        public UsersController(ILogger<UsersController> logger)
+        public UsersController(ILogger<UsersController> logger, IUserService userService)
         {
             _logger = logger;
+            _userService = userService;
         }
 
-        
-
-        #region Listar usúarios 
         [HttpGet]
         public IActionResult GetUsers()
         {
-            return Ok(_users);
+            var users = _userService.GetUsers();
+            return Ok(users);
         }
 
-        // Obter um usuário por CPF
         [HttpGet("{cpf}")]
         public IActionResult GetUserByCPF(string cpf)
         {
-            var user = _users.FirstOrDefault(u => u.CPF == cpf);
+            var user = _userService.GetUserByCPF(cpf);
             if (user == null)
             {
                 return NotFound("Usuário não encontrado.");
             }
             return Ok(user);
         }
-        #endregion
-        
 
-        #region Criação de usúario
         [HttpPost]
         public IActionResult CreateUser([FromBody] User user)
         {
-            // Verifica se o usuário já existe pelo CPF
-            if (_users.Any(u => u.CPF == user.CPF))
+            try
             {
-                return Conflict("Usuário com o mesmo CPF já existe.");
+                var createdUserId = _userService.CreateUser(user);
+                return Ok($"Usuário criado com sucesso! ID: {createdUserId}");
             }
-
-            _users.Add(user);
-            return Ok($"Usuário criado com sucesso! ID: {user.CPF}");
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro ao criar usuário: {ex.Message}");
+            }
         }
-        #endregion
 
-        #region Update usuários
         [HttpPut("{cpf}")]
         public IActionResult UpdateUser(string cpf, User updatedUser)
         {
-            var user = _users.FirstOrDefault(u => u.CPF == cpf);
-            if (user == null)
+            try
             {
-                return NotFound("Usuário não encontrado.");
+                _userService.UpdateUser(cpf, updatedUser);
+                return Ok("Informações do usuário atualizadas com sucesso!");
             }
-            user.Name = updatedUser.Name;
-            user.Address = updatedUser.Address;
-            user.City = updatedUser.Telephone;
-            user.City = updatedUser.City;
-            user.State = updatedUser.State;
-            user.PostalCode = updatedUser.PostalCode;
-            user.Neighborhood = updatedUser.Neighborhood;
-            user.Street = updatedUser.Street;
-            user.ResidenceNumber = updatedUser.ResidenceNumber;
-            return Ok("Informações do usuário atualizadas com sucesso!");
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro ao atualizar usuário: {ex.Message}");
+            }
         }
-        #endregion
 
-        #region Delete usuários
-        
         [HttpDelete("{cpf}")]
         public IActionResult DeleteUser(string cpf)
         {
-            var user = _users.FirstOrDefault(u => u.CPF == cpf);
-            if (user == null)
+            try
             {
-                return NotFound("Usuário não encontrado.");
+                _userService.DeleteUser(cpf);
+                return Ok("Usuário excluído com sucesso!");
             }
-            _users.Remove(user);
-            return Ok("Usuário excluído com sucesso!");
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro ao excluir usuário: {ex.Message}");
+            }
         }
-        #endregion
     }
 }
