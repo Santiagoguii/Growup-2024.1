@@ -21,26 +21,30 @@ namespace Crud_usuarios.Controllers
             _logger = logger;
         }
 
-        // Obter todos os usu�rios
+        
+
+        #region Listar usúarios 
         [HttpGet]
         public IActionResult GetUsers()
         {
             return Ok(_users);
         }
 
-        // Obter um usu�rio por CPF
+        // Obter um usuário por CPF
         [HttpGet("{cpf}")]
         public IActionResult GetUserByCPF(string cpf)
         {
             var user = _users.FirstOrDefault(u => u.CPF == cpf);
             if (user == null)
             {
-                return NotFound("Usu�rio n�o encontrado.");
+                return NotFound("Usuário não encontrado.");
             }
             return Ok(user);
         }
+        #endregion
         
-        // Criar um novo usu�rio
+
+        #region Criação de usúario
         [HttpPost]
         public IActionResult CreateUser([FromBody] User user)
         {
@@ -53,15 +57,16 @@ namespace Crud_usuarios.Controllers
             _users.Add(user);
             return Ok($"Usuário criado com sucesso! ID: {user.CPF}");
         }
+        #endregion
 
-        // Atualizar informa��es do usu�rio
+        #region Update usuários
         [HttpPut("{cpf}")]
         public IActionResult UpdateUser(string cpf, User updatedUser)
         {
             var user = _users.FirstOrDefault(u => u.CPF == cpf);
             if (user == null)
             {
-                return NotFound("Usu�rio n�o encontrado.");
+                return NotFound("Usuário não encontrado.");
             }
             user.Name = updatedUser.Name;
             user.Address = updatedUser.Address;
@@ -72,20 +77,23 @@ namespace Crud_usuarios.Controllers
             user.Neighborhood = updatedUser.Neighborhood;
             user.Street = updatedUser.Street;
             user.ResidenceNumber = updatedUser.ResidenceNumber;
-            return Ok("Informa��es do usu�rio atualizadas com sucesso!");
+            return Ok("Informações do usuário atualizadas com sucesso!");
         }
+        #endregion
 
-        // Excluir um usu�rio
+        #region Delete usuários
+        
         [HttpDelete("{cpf}")]
         public IActionResult DeleteUser(string cpf)
         {
             var user = _users.FirstOrDefault(u => u.CPF == cpf);
             if (user == null)
             {
-                return NotFound("Usu�rio n�o encontrado.");
+                return NotFound("Usuário não encontrado.");
             }
             _users.Remove(user);
-            return Ok("Usu�rio exclu�do com sucesso!");
+            return Ok("Usuário excluído com sucesso!");
         }
+        #endregion
     }
 }
