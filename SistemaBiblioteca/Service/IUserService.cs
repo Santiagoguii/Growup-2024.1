@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
-using Crud_usuarios.Models;
+using SistemaBiblioteca.Models;
 
-namespace Crud_usuarios.Services
+using System.Collections.Generic;
+using SistemaBiblioteca.Models;
+
+namespace SistemaBiblioteca.Services
 {
     public interface IUserService
     {
@@ -12,3 +15,4 @@ namespace Crud_usuarios.Services
         void DeleteUser(string cpf);
     }
 }
+

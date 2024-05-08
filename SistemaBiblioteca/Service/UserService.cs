@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Crud_usuarios.Models;
+using SistemaBiblioteca.Models;
+using SistemaBiblioteca.Services;
 
-namespace Crud_usuarios.Services
+namespace SistemaBiblioteca.Services
 {
     public class UserService : IUserService
     {
@@ -45,7 +46,7 @@ namespace Crud_usuarios.Services
 
             user.Name = updatedUser.Name;
             user.Address = updatedUser.Address;
-            user.Phone = updatedUser.Telephone;
+            user.Phone = updatedUser.Phone;
             user.City = updatedUser.City;
             user.State = updatedUser.State;
             user.PostalCode = updatedUser.PostalCode;
