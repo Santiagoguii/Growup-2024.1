@@ -1,58 +1,53 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using SistemaBiblioteca.Models;
+using SistemaBiblioteca.Repositories;
+using SistemaBiblioteca.Data;
 
 namespace SistemaBiblioteca.Repositories
 {
-
     public class UserRepository : IUserRepository
     {
-        private readonly List<User> _users; 
+        private readonly DataContext _DbContext;
 
-        public UserRepository(List<User> users) 
+        public UserRepository(DataContext dbContext)
         {
-            _users = users;
+            _DbContext = dbContext;
         }
 
         public IEnumerable<User> GetAllUsers()
         {
-            return _users.ToList(); 
+            return _DbContext.Users.ToList();
         }
 
         public User GetUserByCPF(string cpf)
         {
-            return _users.FirstOrDefault(u => u.CPF == cpf);
+            return _DbContext.Users.FirstOrDefault(u => u.CPF == cpf);
         }
 
         public void CreateUser(User user)
         {
-            if (_users.Any(u => u.CPF == user.CPF))
-            {
-                throw new ArgumentException("User with the same CPF already exists.");
-            }
-            _users.Add(user);
+            _DbContext.Users.Add(user);
+            _DbContext.SaveChanges();
         }
 
         public void UpdateUser(User user)
         {
-            var existingUser = _users.FirstOrDefault(u => u.CPF == user.CPF);
-            if (existingUser == null)
-            {
-                throw new ArgumentException("User not found for update.");
-            }
-            existingUser.Name = user.Name;
-            existingUser.Address = user.Address;
+            _DbContext.Entry(user).State = EntityState.Modified;
+            _DbContext.SaveChanges();
         }
 
         public void DeleteUser(string cpf)
         {
-            var user = _users.FirstOrDefault(u => u.CPF == cpf);
-            if (user == null)
+            var user = _DbContext.Users.FirstOrDefault(u => u.CPF == cpf);
+            if (user != null)
             {
-                throw new ArgumentException("User not found for deletion.");
+                _DbContext.Users.Remove(user);
+                _DbContext.SaveChanges();
             }
-            _users.Remove(user);
         }
     }
-
 }
 

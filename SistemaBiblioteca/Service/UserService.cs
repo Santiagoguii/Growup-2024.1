@@ -2,56 +2,70 @@
 using System.Collections.Generic;
 using System.Linq;
 using SistemaBiblioteca.Models;
-using SistemaBiblioteca.Repositories;
 using SistemaBiblioteca.Services;
 
-
-public class UserService : IUserService
+namespace SistemaBiblioteca.Services
 {
-    private readonly IUserRepository _userRepository;
-
-    public UserService(IUserRepository userRepository)
+    public class UserService : IUserService
     {
-        _userRepository = userRepository;
-    }
+        private readonly List<User> _users = new List<User>();
 
-    public IEnumerable<User> GetAllUsers()
-    {
-        return _userRepository.GetAllUsers();
-    }
+        public IEnumerable<User> GetUsers()
+        {
+            return _users;
+        }
 
-    public User GetUserByCPF(string cpf)
-    {
-        return _userRepository.GetUserByCPF(cpf);
-    }
+        public User GetUserByCPF(string cpf)
+        {
+            var user = _users.FirstOrDefault(u => u.CPF == cpf);
+            if (user == null)
+            {
+                throw new InvalidOperationException("Usuário não encontrado.");
+            }
+            return user;
+        }
 
-    public void CreateUser(User user)
-    {
-        _userRepository.CreateUser(user);
-    }
+        public User CreateUser(User user)
+        {
+            if (_users.Any(u => u.CPF == user.CPF))
+            {
+                throw new InvalidOperationException("Usuário com o mesmo CPF já existe.");
+            }
 
-    public void UpdateUser(User user)
-    {
-        _userRepository.UpdateUser(user);
-    }
+            _users.Add(user);
+            return user;
+        }
 
-    public void DeleteUser(string cpf)
-    {
-        _userRepository.DeleteUser(cpf);
-    }
+        public User UpdateUser(string cpf, User updatedUser)
+        {
+            var user = _users.FirstOrDefault(u => u.CPF == cpf);
+            if (user == null)
+            {
+                throw new InvalidOperationException("Usuário não encontrado.");
+            }
 
-    public IEnumerable<User> GetUsers()
-    {
-        throw new NotImplementedException();
-    }
+            user.Name = updatedUser.Name;
+            user.Address = updatedUser.Address;
+            user.Phone = updatedUser.Phone;
+            user.City = updatedUser.City;
+            user.State = updatedUser.State;
+            user.PostalCode = updatedUser.PostalCode;
+            user.Neighborhood = updatedUser.Neighborhood;
+            user.Street = updatedUser.Street;
+            user.ResidenceNumber = updatedUser.ResidenceNumber;
 
-    User IUserService.CreateUser(User user)
-    {
-        throw new NotImplementedException();
-    }
+            return user;
+        }
 
-    public User UpdateUser(string cpf, User updatedUser)
-    {
-        throw new NotImplementedException();
+        public void DeleteUser(string cpf)
+        {
+            var user = _users.FirstOrDefault(u => u.CPF == cpf);
+            if (user == null)
+            {
+                throw new InvalidOperationException("Usuário não encontrado.");
+            }
+
+            _users.Remove(user);
+        }
     }
 }

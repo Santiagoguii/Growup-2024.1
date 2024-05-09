@@ -30,7 +30,7 @@ namespace SistemaBiblioteca
             services.AddControllers();
             services.AddControllers();
 
-            services.AddScoped<IUserService, UserService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddDbContext<DataContext>(options =>
