@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SistemaBiblioteca.Models;
+using SistemaBiblioteca.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace SistemaBiblioteca.Controllers
 {
@@ -12,76 +11,63 @@ namespace SistemaBiblioteca.Controllers
     public class LivrosController : ControllerBase
     {
         private readonly ILogger<LivrosController> _logger;
-        private readonly List<Livro> _livros = new List<Livro>();
+        private readonly ILivroService _livroService;
 
-        public LivrosController(ILogger<LivrosController> logger)
+        public LivrosController(ILogger<LivrosController> logger, ILivroService livroService)
         {
             _logger = logger;
+            _livroService = livroService;
         }
 
-        #region Listar livros
         [HttpGet]
         public IActionResult GetLivros()
         {
-            return Ok(_livros);
+            var livros = _livroService.GetLivros();
+            return Ok(livros);
         }
 
-        // Obter um livro por Id
         [HttpGet("{id}")]
         public IActionResult GetLivroById(int id)
         {
-            var livro = _livros.FirstOrDefault(l => l.Id == id);
+            var livro = _livroService.GetLivroById(id);
             if (livro == null)
             {
                 return NotFound("Livro não encontrado.");
             }
             return Ok(livro);
         }
-        #endregion
 
-        #region Criação de livro
         [HttpPost]
         public IActionResult CreateLivro([FromBody] Livro livro)
         {
-            // Verifica se o livro já existe pelo Id
-            if (_livros.Any(l => l.Id == livro.Id))
+            var result = _livroService.CreateLivro(livro);
+            if (result.StartsWith("Livro criado com sucesso!"))
             {
-                return Conflict("Livro com o mesmo Id já existe.");
+                return CreatedAtAction(nameof(GetLivroById), new { id = livro.Id }, livro);
             }
-
-            _livros.Add(livro);
-            return Ok($"Livro criado com sucesso! ID: {livro.Id}");
+            return Conflict(result);
         }
-        #endregion
 
-        #region Atualizar livro
         [HttpPut("{id}")]
-        public IActionResult UpdateLivro(int id, Livro updatedLivro)
+        public IActionResult UpdateLivro(int id, [FromBody] Livro updatedLivro)
         {
-            var livro = _livros.FirstOrDefault(l => l.Id == id);
-            if (livro == null)
+            var result = _livroService.UpdateLivro(id, updatedLivro);
+            if (result == "Informações do livro atualizadas com sucesso!")
             {
-                return NotFound("Livro não encontrado.");
+                return Ok(result);
             }
-            livro.Titulo = updatedLivro.Titulo;
-            livro.Autor = updatedLivro.Autor;
-            livro.Genero = updatedLivro.Genero;
-            return Ok("Informações do livro atualizadas com sucesso!");
+            return NotFound(result);
         }
-        #endregion
 
-        #region Deletar livro
         [HttpDelete("{id}")]
         public IActionResult DeleteLivro(int id)
         {
-            var livro = _livros.FirstOrDefault(l => l.Id == id);
-            if (livro == null)
+            var result = _livroService.DeleteLivro(id);
+            if (result == "Livro excluído com sucesso!")
             {
-                return NotFound("Livro não encontrado.");
+                return Ok(result);
             }
-            _livros.Remove(livro);
-            return Ok("Livro excluído com sucesso!");
+            return NotFound(result);
         }
-        #endregion
     }
 }

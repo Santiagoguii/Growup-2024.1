@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ivaldo\\source\\repos\\Growup-2024.1\\SistemaBiblioteca\\SistemaBiblioteca.csproj": {}
+    "C:\\Users\\2005c\\OneDrive\\Documentos\\growup2024.1\\Growup-2024.1\\SistemaBiblioteca\\SistemaBiblioteca.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ivaldo\\source\\repos\\Growup-2024.1\\SistemaBiblioteca\\SistemaBiblioteca.csproj": {
+    "C:\\Users\\2005c\\OneDrive\\Documentos\\growup2024.1\\Growup-2024.1\\SistemaBiblioteca\\SistemaBiblioteca.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ivaldo\\source\\repos\\Growup-2024.1\\SistemaBiblioteca\\SistemaBiblioteca.csproj",
+        "projectUniqueName": "C:\\Users\\2005c\\OneDrive\\Documentos\\growup2024.1\\Growup-2024.1\\SistemaBiblioteca\\SistemaBiblioteca.csproj",
         "projectName": "SistemaBiblioteca",
-        "projectPath": "C:\\Users\\Ivaldo\\source\\repos\\Growup-2024.1\\SistemaBiblioteca\\SistemaBiblioteca.csproj",
-        "packagesPath": "C:\\Users\\Ivaldo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ivaldo\\source\\repos\\Growup-2024.1\\SistemaBiblioteca\\obj\\",
+        "projectPath": "C:\\Users\\2005c\\OneDrive\\Documentos\\growup2024.1\\Growup-2024.1\\SistemaBiblioteca\\SistemaBiblioteca.csproj",
+        "packagesPath": "C:\\Users\\2005c\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\2005c\\OneDrive\\Documentos\\growup2024.1\\Growup-2024.1\\SistemaBiblioteca\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Ivaldo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\2005c\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -49,10 +53,6 @@
               "target": "Package",
               "version": "[8.0.4, )"
             },
-            "Microsoft.EntityFrameworkCore.Sqlite": {
-              "target": "Package",
-              "version": "[8.0.4, )"
-            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -62,10 +62,6 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
-            },
-            "System.Diagnostics.Tools": {
-              "target": "Package",
-              "version": "[4.3.0, )"
             }
           },
           "imports": [
