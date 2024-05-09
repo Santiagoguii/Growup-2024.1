@@ -1,4 +1,4 @@
-using Crud_usuarios.Models;
+using SistemaBiblioteca.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,8 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SistemaBiblioteca.Data;
 
-namespace Crud_usuarios
+namespace SistemaBiblioteca
 {
     public class Startup
     {
@@ -26,7 +27,7 @@ namespace Crud_usuarios
         {
             services.AddControllers();
             services.AddControllers();
-            services.AddDbContext<Crud_usuarios.Models.Biblioteca>(options =>
+            services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 

@@ -5,14 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Crud_usuarios.Models;
-using Crud_usuarios.Services;
+using SistemaBiblioteca.Models;
+using SistemaBiblioteca.Services;
+using SistemaBiblioteca.Models;
 
-namespace Crud_usuarios.Controllers
+namespace SistemaBiblioteca.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class UsersController : Controller
+    public class UsersController : ControllerBase
     {
         private readonly ILogger<UsersController> _logger;
         private readonly IUserService _userService;

@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Logging;
 using SistemaBiblioteca.Models;
 using SistemaBiblioteca.Services;
-using System;
 
 namespace SistemaBiblioteca.Controllers
 {
@@ -12,7 +11,6 @@ namespace SistemaBiblioteca.Controllers
     {
         private readonly ILogger<LivrosController> _logger;
         private readonly ILivroService _livroService;
-
         public LivrosController(ILogger<LivrosController> logger, ILivroService livroService)
         {
             _logger = logger;

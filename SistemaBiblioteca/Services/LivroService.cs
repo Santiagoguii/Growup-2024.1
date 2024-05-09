@@ -29,7 +29,7 @@ namespace SistemaBiblioteca.Services
         {
             if (_livros.Any(l => l.Id == livro.Id))
             {
-                return "Livro com o mesmo Id j· existe.";
+                return "Livro com o mesmo Id j√° existe.";
             }
 
             _livros.Add(livro);
@@ -41,13 +41,13 @@ namespace SistemaBiblioteca.Services
             var livro = _livros.FirstOrDefault(l => l.Id == id);
             if (livro == null)
             {
-                return "Livro n„o encontrado.";
+                return "Livro n√£o encontrado.";
             }
 
             livro.Title = updatedLivro.Title;
             livro.Author = updatedLivro.Author;
             livro.Genre = updatedLivro.Genre;
-            return "InformaÁıes do livro atualizadas com sucesso!";
+            return "Informa√ß√µes do livro atualizadas com sucesso!";
         }
 
         public string DeleteLivro(int id)
@@ -55,11 +55,11 @@ namespace SistemaBiblioteca.Services
             var livro = _livros.FirstOrDefault(l => l.Id == id);
             if (livro == null)
             {
-                return "Livro n„o encontrado.";
+                return "Livro n√£o encontrado.";
             }
 
             _livros.Remove(livro);
-            return "Livro excluÌdo com sucesso!";
+            return "Livro exclu√≠do com sucesso!";
         }
     }
 }

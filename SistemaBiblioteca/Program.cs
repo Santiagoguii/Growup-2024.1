@@ -1,12 +1,14 @@
-using Crud_usuarios.Services;
+using SistemaBiblioteca.Services;
 using Microsoft.OpenApi.Models;
+using SistemaBiblioteca.Data;
+using Microsoft.EntityFrameworkCore;
+using SistemaBiblioteca.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
@@ -15,6 +17,16 @@ builder.Services.AddSwaggerGen(c =>
         Version = "v1"
     });
 });
+
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddScoped<IUserService, UserService>();
+
+builder.Services.AddTransient<ILivroService, LivroService>();
+builder.Services.AddScoped<ILivroRepository, LivroRepository>();
+
+builder.Services.AddDbContext<DataContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString(name: "DefaultConnection")));
+
 
 var app = builder.Build();
 

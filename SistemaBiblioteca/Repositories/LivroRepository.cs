@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SistemaBiblioteca.Data;
 using SistemaBiblioteca.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,42 +8,42 @@ namespace SistemaBiblioteca.Repositories
 {
     public class LivroRepository : ILivroRepository
     {
-        private readonly Biblioteca _dbContext;
+        private readonly DataContext _DbContext;
 
-        public LivroRepository(Biblioteca dbContext)
+        public LivroRepository(DataContext DbContext)
         {
-            _dbContext = dbContext;
+            _DbContext = DbContext;
         }
 
         public IEnumerable<Livro> GetLivros()
         {
-            return _dbContext.Set<Livro>().ToList();
+            return _DbContext.Set<Livro>().ToList();
         }
 
-        public Livro GetLivroById(int id)
+        public Livro? GetLivroById(int id)
         {
-            return _dbContext.Set<Livro>().FirstOrDefault(l => l.Id == id);
+            return _DbContext.livros!.FirstOrDefault(l => l.Id == id);
         }
 
         public void AddLivro(Livro livro)
         {
-            _dbContext.Set<Livro>().Add(livro);
-            _dbContext.SaveChanges();
+            _DbContext.Set<Livro>().Add(livro);
+            _DbContext.SaveChanges();
         }
 
         public void UpdateLivro(Livro livro)
         {
-            _dbContext.Entry(livro).State = EntityState.Modified;
-            _dbContext.SaveChanges();
+            _DbContext.Entry(livro).State = EntityState.Modified;
+            _DbContext.SaveChanges();
         }
 
         public void DeleteLivro(int id)
         {
-            var livro = _dbContext.Set<Livro>().FirstOrDefault(l => l.Id == id);
+            var livro = _DbContext.Set<Livro>().FirstOrDefault(l => l.Id == id);
             if (livro != null)
             {
-                _dbContext.Set<Livro>().Remove(livro);
-                _dbContext.SaveChanges();
+                _DbContext.Set<Livro>().Remove(livro);
+                _DbContext.SaveChanges();
             }
         }
     }
