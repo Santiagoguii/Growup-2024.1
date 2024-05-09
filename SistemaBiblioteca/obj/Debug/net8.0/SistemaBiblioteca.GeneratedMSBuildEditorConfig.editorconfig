@@ -9,11 +9,75 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SistemaBiblioteca
 build_property.RootNamespace = SistemaBiblioteca
-build_property.ProjectDir = C:\Users\mateusDizeu\source\repos\Growup-2024.1\SistemaBiblioteca\
+build_property.ProjectDir = C:\Users\2005c\OneDrive\Documentos\growup2024.1\Growup-2024.1\SistemaBiblioteca\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\mateusDizeu\source\repos\Growup-2024.1\SistemaBiblioteca
+build_property.MSBuildProjectDirectory = C:\Users\2005c\OneDrive\Documentos\growup2024.1\Growup-2024.1\SistemaBiblioteca
 build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/2005c/OneDrive/Documentos/growup2024.1/Growup-2024.1/SistemaBiblioteca/Views/livros/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcbGl2cm9zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2005c/OneDrive/Documentos/growup2024.1/Growup-2024.1/SistemaBiblioteca/Views/livros/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcbGl2cm9zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2005c/OneDrive/Documentos/growup2024.1/Growup-2024.1/SistemaBiblioteca/Views/livros/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcbGl2cm9zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2005c/OneDrive/Documentos/growup2024.1/Growup-2024.1/SistemaBiblioteca/Views/livros/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcbGl2cm9zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2005c/OneDrive/Documentos/growup2024.1/Growup-2024.1/SistemaBiblioteca/Views/livros/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcbGl2cm9zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2005c/OneDrive/Documentos/growup2024.1/Growup-2024.1/SistemaBiblioteca/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2005c/OneDrive/Documentos/growup2024.1/Growup-2024.1/SistemaBiblioteca/Views/Users/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2005c/OneDrive/Documentos/growup2024.1/Growup-2024.1/SistemaBiblioteca/Views/Users/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2005c/OneDrive/Documentos/growup2024.1/Growup-2024.1/SistemaBiblioteca/Views/Users/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2005c/OneDrive/Documentos/growup2024.1/Growup-2024.1/SistemaBiblioteca/Views/Users/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2005c/OneDrive/Documentos/growup2024.1/Growup-2024.1/SistemaBiblioteca/Views/Users/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2005c/OneDrive/Documentos/growup2024.1/Growup-2024.1/SistemaBiblioteca/Views/User/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2005c/OneDrive/Documentos/growup2024.1/Growup-2024.1/SistemaBiblioteca/Views/User/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2005c/OneDrive/Documentos/growup2024.1/Growup-2024.1/SistemaBiblioteca/Views/User/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2005c/OneDrive/Documentos/growup2024.1/Growup-2024.1/SistemaBiblioteca/Views/User/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2005c/OneDrive/Documentos/growup2024.1/Growup-2024.1/SistemaBiblioteca/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

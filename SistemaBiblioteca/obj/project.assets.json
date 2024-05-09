@@ -428,19 +428,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mateusDizeu\\.nuget\\packages\\": {}
+    "C:\\Users\\2005c\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mateusDizeu\\source\\repos\\Growup-2024.1\\SistemaBiblioteca\\SistemaBiblioteca.csproj",
+      "projectUniqueName": "C:\\Users\\2005c\\OneDrive\\Documentos\\growup2024.1\\Growup-2024.1\\SistemaBiblioteca\\SistemaBiblioteca.csproj",
       "projectName": "SistemaBiblioteca",
-      "projectPath": "C:\\Users\\mateusDizeu\\source\\repos\\Growup-2024.1\\SistemaBiblioteca\\SistemaBiblioteca.csproj",
-      "packagesPath": "C:\\Users\\mateusDizeu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mateusDizeu\\source\\repos\\Growup-2024.1\\SistemaBiblioteca\\obj\\",
+      "projectPath": "C:\\Users\\2005c\\OneDrive\\Documentos\\growup2024.1\\Growup-2024.1\\SistemaBiblioteca\\SistemaBiblioteca.csproj",
+      "packagesPath": "C:\\Users\\2005c\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\2005c\\OneDrive\\Documentos\\growup2024.1\\Growup-2024.1\\SistemaBiblioteca\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\mateusDizeu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\2005c\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -495,7 +500,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
