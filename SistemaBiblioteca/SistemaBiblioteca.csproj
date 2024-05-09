@@ -7,6 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\LivrosController.cs" />
+    <Compile Remove="Repositories\ILivroRepository.cs" />
+    <Compile Remove="Repositories\LivroRepository.cs" />
+    <Compile Remove="Services\ILivroService.cs" />
+    <Compile Remove="Services\LivroService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Controllers\LivrosController.cs" />
+    <None Include="Repositories\ILivroRepository.cs" />
+    <None Include="Repositories\LivroRepository.cs" />
+    <None Include="Services\ILivroService.cs" />
+    <None Include="Services\LivroService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 

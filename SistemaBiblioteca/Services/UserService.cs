@@ -45,7 +45,7 @@ namespace Crud_usuarios.Services
 
             user.Name = updatedUser.Name;
             user.Address = updatedUser.Address;
-            user.Phone = updatedUser.Telephone;
+            user.Phone = updatedUser.Phone;
             user.City = updatedUser.City;
             user.State = updatedUser.State;
             user.PostalCode = updatedUser.PostalCode;

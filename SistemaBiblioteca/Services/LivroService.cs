@@ -44,9 +44,9 @@ namespace SistemaBiblioteca.Services
                 return "Livro não encontrado.";
             }
 
-            livro.Titulo = updatedLivro.Titulo;
-            livro.Autor = updatedLivro.Autor;
-            livro.Genero = updatedLivro.Genero;
+            livro.Title = updatedLivro.Title;
+            livro.Author = updatedLivro.Author;
+            livro.Genre = updatedLivro.Genre;
             return "Informações do livro atualizadas com sucesso!";
         }
 
