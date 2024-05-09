@@ -19,17 +19,17 @@ namespace SistemaBiblioteca.Repositories
 
         public IEnumerable<User> GetAllUsers()
         {
-            return _DbContext.Users.ToList();
+            return _DbContext.Users!.ToList();
         }
 
-        public User GetUserByCPF(string cpf)
+        public User? GetUserByCPF(string cpf)
         {
-            return _DbContext.Users.FirstOrDefault(u => u.CPF == cpf);
+            return _DbContext.Users!.FirstOrDefault(u => u.CPF == cpf);
         }
 
         public void CreateUser(User user)
         {
-            _DbContext.Users.Add(user);
+            _DbContext.Users!.Add(user);
             _DbContext.SaveChanges();
         }
 
@@ -41,10 +41,10 @@ namespace SistemaBiblioteca.Repositories
 
         public void DeleteUser(string cpf)
         {
-            var user = _DbContext.Users.FirstOrDefault(u => u.CPF == cpf);
+            var user = _DbContext.Users!.FirstOrDefault(u => u.CPF == cpf);
             if (user != null)
             {
-                _DbContext.Users.Remove(user);
+                _DbContext.Users!.Remove(user);
                 _DbContext.SaveChanges();
             }
         }

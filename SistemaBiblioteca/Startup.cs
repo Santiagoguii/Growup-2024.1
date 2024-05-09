@@ -30,9 +30,6 @@ namespace SistemaBiblioteca
             services.AddControllers();
             services.AddControllers();
 
-            services.AddTransient<IUserService, UserService>();
-            services.AddScoped<IUserRepository, UserRepository>();
-
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
