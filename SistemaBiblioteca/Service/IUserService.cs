@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using SistemaBiblioteca.Models;
 
-using System.Collections.Generic;
-using SistemaBiblioteca.Models;
 
 namespace SistemaBiblioteca.Services
 {

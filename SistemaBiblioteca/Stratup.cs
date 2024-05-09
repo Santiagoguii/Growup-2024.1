@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SistemaBiblioteca.Data;
 using SistemaBiblioteca.Services;
+using SistemaBiblioteca.Repositories;
 
 namespace SistemaBiblioteca
 {
@@ -30,7 +31,7 @@ namespace SistemaBiblioteca
             services.AddControllers();
 
             services.AddScoped<IUserService, UserService>();
-          
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
