@@ -18,7 +18,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddDbContext<DataContext>(options => 

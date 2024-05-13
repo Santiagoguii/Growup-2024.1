@@ -1,71 +1,72 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using SistemaBiblioteca.Models;
 using SistemaBiblioteca.Services;
+using SistemaBiblioteca.Repositories;
 
 namespace SistemaBiblioteca.Services
 {
     public class UserService : IUserService
     {
-        private readonly List<User> _users = new List<User>();
+        private readonly IUserRepository _userRepository;
+
+        public UserService(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
 
         public IEnumerable<User> GetUsers()
         {
-            return _users;
+            return _userRepository.GetAllUsers();
         }
 
         public User GetUserByCPF(string cpf)
         {
-            var user = _users.FirstOrDefault(u => u.CPF == cpf);
-            if (user == null)
-            {
-                throw new InvalidOperationException("Usuário não encontrado.");
-            }
-            return user;
+            return _userRepository.GetUserByCPF(cpf);
         }
 
         public User CreateUser(User user)
         {
-            if (_users.Any(u => u.CPF == user.CPF))
+            if (_userRepository.GetUserByCPF(user.CPF) != null)
             {
                 throw new InvalidOperationException("Usuário com o mesmo CPF já existe.");
             }
 
-            _users.Add(user);
+            _userRepository.CreateUser(user);
             return user;
         }
 
         public User UpdateUser(string cpf, User updatedUser)
         {
-            var user = _users.FirstOrDefault(u => u.CPF == cpf);
-            if (user == null)
+            var existingUser = _userRepository.GetUserByCPF(cpf);
+            if (existingUser == null)
             {
                 throw new InvalidOperationException("Usuário não encontrado.");
             }
 
-            user.Name = updatedUser.Name;
-            user.Address = updatedUser.Address;
-            user.Phone = updatedUser.Phone;
-            user.City = updatedUser.City;
-            user.State = updatedUser.State;
-            user.PostalCode = updatedUser.PostalCode;
-            user.Neighborhood = updatedUser.Neighborhood;
-            user.Street = updatedUser.Street;
-            user.ResidenceNumber = updatedUser.ResidenceNumber;
+            existingUser.Name = updatedUser.Name;
+            existingUser.Address = updatedUser.Address;
+            existingUser.Phone = updatedUser.Phone;
+            existingUser.City = updatedUser.City;
+            existingUser.State = updatedUser.State;
+            existingUser.PostalCode = updatedUser.PostalCode;
+            existingUser.Neighborhood = updatedUser.Neighborhood;
+            existingUser.Street = updatedUser.Street;
+            existingUser.ResidenceNumber = updatedUser.ResidenceNumber;
 
-            return user;
+            _userRepository.UpdateUser(existingUser);
+            return existingUser;
         }
 
         public void DeleteUser(string cpf)
         {
-            var user = _users.FirstOrDefault(u => u.CPF == cpf);
-            if (user == null)
+            var existingUser = _userRepository.GetUserByCPF(cpf);
+            if (existingUser == null)
             {
                 throw new InvalidOperationException("Usuário não encontrado.");
             }
 
-            _users.Remove(user);
+            _userRepository.DeleteUser(cpf);
         }
     }
 }

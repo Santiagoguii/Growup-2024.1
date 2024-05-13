@@ -12,14 +12,14 @@ namespace SistemaBiblioteca.Repositories
     {
         private readonly DataContext _DbContext;
 
-        public UserRepository(DataContext dbContext)
+        public UserRepository(DataContext DbContext)
         {
-            _DbContext = dbContext;
+            _DbContext = DbContext;
         }
 
         public IEnumerable<User> GetAllUsers()
         {
-            return _DbContext.Users!.ToList();
+             return _DbContext.Users!.ToList();
         }
 
         public User? GetUserByCPF(string cpf)
