@@ -1,4 +1,4 @@
-using Crud_usuarios.Models;
+using SistemaBiblioteca.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,11 +14,11 @@ using SistemaBiblioteca.Data;
 using SistemaBiblioteca.Services;
 using SistemaBiblioteca.Repositories;
 
-namespace Crud_usuarios
+namespace SistemaBiblioteca
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration)    
         {
             Configuration = configuration;
         }
@@ -58,4 +58,3 @@ namespace Crud_usuarios
     {
     }
 }
-
