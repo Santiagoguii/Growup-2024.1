@@ -2,6 +2,7 @@ using SistemaBiblioteca.Services;
 using Microsoft.OpenApi.Models;
 using SistemaBiblioteca.Data;
 using Microsoft.EntityFrameworkCore;
+using SistemaBiblioteca.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,9 @@ builder.Services.AddSwaggerGen(c =>
         Version = "v1"
     });
 });
+
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddDbContext<DataContext>(options => 
     options.UseSqlite(builder.Configuration.GetConnectionString(name: "DefaultConnection")));

@@ -10,6 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SistemaBiblioteca.Data;
+using SistemaBiblioteca.Services;
+using SistemaBiblioteca.Repositories;
 
 namespace Crud_usuarios
 {
@@ -26,7 +29,8 @@ namespace Crud_usuarios
         {
             services.AddControllers();
             services.AddControllers();
-            services.AddDbContext<Crud_usuarios.Models.Biblioteca>(options =>
+
+            services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
