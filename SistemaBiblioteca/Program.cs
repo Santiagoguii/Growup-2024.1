@@ -21,6 +21,9 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
+builder.Services.AddScoped<ILivroService, LivroService>();
+builder.Services.AddScoped<ILivroRepository, LivroRepository>();
+
 builder.Services.AddDbContext<DataContext>(options => 
     options.UseSqlite(builder.Configuration.GetConnectionString(name: "DefaultConnection")));
 
