@@ -1,4 +1,4 @@
-using SistemaBiblioteca.Models;
+﻿using SistemaBiblioteca.Models;
 
 namespace SistemaBiblioteca.Services
 {
@@ -6,6 +6,7 @@ namespace SistemaBiblioteca.Services
     {
         IEnumerable<Livro> GetLivros();
         Livro GetLivroById(int id);
+        Livro? GetLivroByTitle(string title);
         string CreateLivro(Livro livro);
         string UpdateLivro(int id, Livro updatedLivro);
         string DeleteLivro(int id);

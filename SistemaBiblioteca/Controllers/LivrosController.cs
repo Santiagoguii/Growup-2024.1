@@ -1,5 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using SistemaBiblioteca.Models;
 using SistemaBiblioteca.Services;
 
@@ -28,6 +33,17 @@ namespace SistemaBiblioteca.Controllers
         public IActionResult GetLivroById(int id)
         {
             var livro = _livroService.GetLivroById(id);
+            if (livro == null)
+            {
+                return NotFound("Livro não encontrado.");
+            }
+            return Ok(livro);
+        }
+
+        [HttpGet("search {Title}")]
+        public IActionResult SearchLivroByTitle([FromQuery] string titulo)
+        {
+            var livro = _livroService.GetLivroByTitle(title);
             if (livro == null)
             {
                 return NotFound("Livro não encontrado.");

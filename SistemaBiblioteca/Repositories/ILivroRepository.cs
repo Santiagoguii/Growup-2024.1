@@ -1,4 +1,4 @@
-using SistemaBiblioteca.Models;
+﻿using SistemaBiblioteca.Models;
 using System.Collections.Generic;
 
 namespace SistemaBiblioteca.Repositories
@@ -7,6 +7,7 @@ namespace SistemaBiblioteca.Repositories
     {
         IEnumerable<Livro> GetLivros();
         Livro? GetLivroById(int id);
+        Livro? GetLivroByTitle(string title);
         void AddLivro(Livro livro);
         void UpdateLivro(Livro livro);
         void DeleteLivro(int id);

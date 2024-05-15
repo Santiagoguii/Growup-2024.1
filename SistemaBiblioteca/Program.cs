@@ -18,14 +18,11 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-builder.Services.AddTransient<IUserService, UserService>();
-builder.Services.AddScoped<IUserService, UserService>();
-
-builder.Services.AddTransient<ILivroService, LivroService>();
+builder.Services.AddScoped<ILivroService, LivroService>();
 builder.Services.AddScoped<ILivroRepository, LivroRepository>();
 
 builder.Services.AddDbContext<DataContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString(name: "DefaultConnection")));
+ options.UseSqlite(builder.Configuration.GetConnectionString(name: "DefaultConnection")));
 
 
 var app = builder.Build();

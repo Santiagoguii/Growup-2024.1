@@ -1,8 +1,10 @@
-using Microsoft.EntityFrameworkCore;
-using SistemaBiblioteca.Data;
-using SistemaBiblioteca.Models;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using SistemaBiblioteca.Models;
+using SistemaBiblioteca.Repositories;
+using SistemaBiblioteca.Data;
 
 namespace SistemaBiblioteca.Repositories
 {
@@ -22,7 +24,12 @@ namespace SistemaBiblioteca.Repositories
 
         public Livro? GetLivroById(int id)
         {
-            return _DbContext.livros!.FirstOrDefault(l => l.Id == id);
+            return _DbContext.Livros!.FirstOrDefault(l => l.Id == id);
+        }
+
+        public Livro? GetLivroByTitle(string title)
+        {
+            return _DbContext.Livros!.FirstOrDefault(l => l.Title.ToLower() == title.ToLower());
         }
 
         public void AddLivro(Livro livro)
