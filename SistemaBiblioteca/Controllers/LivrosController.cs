@@ -1,8 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using SistemaBiblioteca.Models;
 using SistemaBiblioteca.Services;
-using System;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace SistemaBiblioteca.Controllers
 {
@@ -12,7 +17,6 @@ namespace SistemaBiblioteca.Controllers
     {
         private readonly ILogger<LivrosController> _logger;
         private readonly ILivroService _livroService;
-
         public LivrosController(ILogger<LivrosController> logger, ILivroService livroService)
         {
             _logger = logger;
@@ -35,6 +39,32 @@ namespace SistemaBiblioteca.Controllers
                 return NotFound("Livro não encontrado.");
             }
             return Ok(livro);
+        }
+
+        [HttpGet("search/title")]
+        [SwaggerOperation(Summary = "SearchLivroByTitle", Description = "Searches for a livro by its title.")]
+        [SwaggerResponse(StatusCodes.Status200OK, "OK")]
+        public IActionResult SearchLivroByTitle([FromQuery][SwaggerParameter("Title", Required = true)] string title)
+        {
+            var livro = _livroService.GetLivroByTitle(title);
+            if (livro == null)
+            {
+                return NotFound("Livro não encontrado.");
+            }
+            return Ok(livro);
+        }
+
+        [HttpGet("search/author")]
+        [SwaggerOperation(Summary = "SearchLivroByAuthor", Description = "Searches for a livro by its author.")]
+        [SwaggerResponse(StatusCodes.Status200OK, "OK")]
+        public IActionResult SearchLivroByAuthor([FromQuery][SwaggerParameter("Author", Required = true)] string author)
+        {
+            var livros = _livroService.GetLivrosByAuthor(author);
+            if (livros == null || !livros.Any())
+            {
+                return NotFound("Nenhum livro encontrado para o autor especificado.");
+            }
+            return Ok(livros);
         }
 
         [HttpPost]

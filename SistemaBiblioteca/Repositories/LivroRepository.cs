@@ -1,48 +1,61 @@
-using Microsoft.EntityFrameworkCore;
-using SistemaBiblioteca.Models;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using SistemaBiblioteca.Models;
+using SistemaBiblioteca.Repositories;
+using SistemaBiblioteca.Data;
 
 namespace SistemaBiblioteca.Repositories
 {
     public class LivroRepository : ILivroRepository
     {
-        private readonly Biblioteca _dbContext;
+        private readonly DataContext _DbContext;
 
-        public LivroRepository(Biblioteca dbContext)
+        public LivroRepository(DataContext DbContext)
         {
-            _dbContext = dbContext;
+            _DbContext = DbContext;
         }
 
         public IEnumerable<Livro> GetLivros()
         {
-            return _dbContext.Set<Livro>().ToList();
+            return _DbContext.Set<Livro>().ToList();
         }
 
-        public Livro GetLivroById(int id)
+        public Livro? GetLivroById(int id)
         {
-            return _dbContext.Set<Livro>().FirstOrDefault(l => l.Id == id);
+            return _DbContext.Livros!.FirstOrDefault(l => l.Id == id);
+        }
+
+        public IEnumerable<Livro> GetLivroByTitle(string title)
+        {
+            return _DbContext.Livros!.Where(l => l.Title.ToLower() == title.ToLower());
+        }
+
+        public IEnumerable<Livro> GetLivrosByAuthor(string author)
+        {
+            return _DbContext.Livros!.Where(l => l.Author.ToLower() == author.ToLower()); 
         }
 
         public void AddLivro(Livro livro)
         {
-            _dbContext.Set<Livro>().Add(livro);
-            _dbContext.SaveChanges();
+            _DbContext.Set<Livro>().Add(livro);
+            _DbContext.SaveChanges();
         }
 
         public void UpdateLivro(Livro livro)
         {
-            _dbContext.Entry(livro).State = EntityState.Modified;
-            _dbContext.SaveChanges();
+            _DbContext.Entry(livro).State = EntityState.Modified;
+            _DbContext.SaveChanges();
         }
 
         public void DeleteLivro(int id)
         {
-            var livro = _dbContext.Set<Livro>().FirstOrDefault(l => l.Id == id);
+            var livro = _DbContext.Set<Livro>().FirstOrDefault(l => l.Id == id);
             if (livro != null)
             {
-                _dbContext.Set<Livro>().Remove(livro);
-                _dbContext.SaveChanges();
+                _DbContext.Set<Livro>().Remove(livro);
+                _DbContext.SaveChanges();
             }
         }
     }

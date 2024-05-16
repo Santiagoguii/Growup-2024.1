@@ -9,5 +9,6 @@ namespace SistemaBiblioteca.Data
         {}
 
         public DbSet<User>? Users { get; set; }
+        public DbSet<Livro>? Livros { get; set; }
     }
 }
