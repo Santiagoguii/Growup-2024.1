@@ -1,0 +1,6 @@
+@Emprestimo_HostAddress = http://localhost:5039
+
+GET {{Emprestimo_HostAddress}}/
+Accept: application/json
+
+###
