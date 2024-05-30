@@ -16,7 +16,6 @@ Este projeto de Gerenciamento de Biblioteca tem as seguintes funções:
 - Gerenciamento de devolução
 - Registro de atividades
 - Pesquisa de livro
-- Documentação da API: Uso do Swagger para documentar a API, facilitando seu uso por outros desenvolvedores.
 - Funcionalidade de Multa Progressiva por Atraso: Multas incrementais por dia de atraso na devolução, não excedendo o dobro do valor do livro.
 
 ## Requisitos Não Funcionais
@@ -25,7 +24,7 @@ Este projeto de Gerenciamento de Biblioteca tem as seguintes funções:
 - Segurança: Implementação de autenticação JWT para proteger a API.
 - Banco de Dados: Utilização do Entity Framework Core para integração com um banco de dados SQL.
 - Validação de Dados: Validação de dados de entrada para garantir precisão e integridade.
-- Testes Unitários: Desenvolvimento de testes unitários para assegurar a corretude do código.
+- Documentação da API: Uso do Swagger para documentar a API, facilitando seu uso por outros desenvolvedores.
 
 ## Processo de Desenvolvimento
 
