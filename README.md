@@ -71,4 +71,5 @@ O desenvolvimento do Sistema de Gerenciamento de Biblioteca contém as seguintes
 - GUILHERME PEREIRA DA SILVA SANTIAGO
 - GRAZIELLY FERNANDA FELIX DA SILVA
 - MATEUS PEREIRA DIZEU
+- MELKSEDEC ANTÔNIO DA SILVA
 
