@@ -1,6 +1,6 @@
 # Sistema de Gerenciamento de Biblioteca
 
-Este é um projeto de sistema de gerenciamento de biblioteca desenvolvido em C# utilizando o framework ASP.NET Core 6.0.
+Este é um projeto de sistema de gerenciamento de biblioteca desenvolvido em C# utilizando o framework ASP.NET Core.
 
 ## Descrição Geral
 
