@@ -54,7 +54,7 @@ public class EmprestimoService : IEmprestimoService
             throw new BadRequestException("Usuário tem multas pendentes.");
         }
 
-        int numEmprestimosUsuario = usuario.Emprestimos.Count(e => e.Status == EmprestimoStatus.EmAndamento || e.Status == EmprestimoStatus.Atrasado);
+        int numEmprestimosUsuario = usuario.Emprestimos.Count(e => e.Status != EmprestimoStatus.Devolvido);
         if (numEmprestimosUsuario >= 3)
         {
             throw new BadRequestException("Limite de empréstimos do usuário atingido.");
