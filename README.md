@@ -82,4 +82,5 @@ A implementação do Sistema de Gerenciamento de Biblioteca deve seguir as segui
 - GUILHERME PEREIRA DA SILVA SANTIAGO
 - GRAZIELLY FERNANDA FELIX DA SILVA
 - MATEUS PEREIRA DIZEU
+- MELKSEDEC ANTÔNIO DA SILVA
 
